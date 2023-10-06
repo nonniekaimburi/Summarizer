@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Summarizer</title>
+</head>
+<body>
+
+<h1>Document Summarizer</h1>
+
+<!-- Manual text input -->
+<textarea id="inputText" rows="10" cols="50" placeholder="Enter or paste your text here..."></textarea>
+<button onclick="sendForSummary()">Summarize Text</button>
+
+<!-- Audio file input -->
+<input type="file" id="audioInput" accept="audio/*">
+<button onclick="transcribeAndSummarize()">Transcribe and Summarize</button>
+
+<!-- QR code scanning -->
+<input type="file" id="qrscanner" accept="image/*">
+<button onclick="scanQR()">Scan QR Code</button>
+
+<script src="path_to_qrcode-reader.js"></script>
+<script>
+    function sendForSummary() {
+        // Use AJAX or similar method to send the content of #inputText to the server for summarization.
+    }
+
+    function transcribeAndSummarize() {
+        // Use AJAX or similar method to send the audio file to the server for transcription and summarization.
+    }
+
+    function scanQR() {
+        let qr = new QrCode();
+        qr.callback = function(err, value) {
+            if (err) {
+                // Handle error.
+                console.error(err);
+                return;
+            }
+            // Value here will have the text from the QR code. 
+            // Use this to fetch the required document or use as input for summarization.
+        };
+        let file = document.getElementById('qrscanner').files[0];
+        qr.decode(file);
+    }
+</script>
+</body>
+</html>
